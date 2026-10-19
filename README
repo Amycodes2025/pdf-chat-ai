@@ -1,0 +1,92 @@
+# Chat with your PDF
+
+An AI-powered web app that lets you upload any PDF and ask questions about it in plain language.
+Every answer shows the page numbers it came from.
+
+🔗 **Live app:** https://pdf-chat-ai-7xmmn3plmwakm3k8bywt7c.streamlit.app/
+
+## Features
+- **Smart search (RAG):** finds the most relevant parts of the PDF before answering
+- **Page sources:** every answer shows which pages it used
+- **Live streaming answers:** words appear as the AI writes them
+- **Responsive design:** works on mobile and desktop
+- **Error handling:** detects scanned, broken, password-protected, or oversized PDFs
+- **Privacy-friendly:** files are processed in memory and never stored
+
+## How It Works
+
+1. **Read:** extracts text from each page of the PDF
+2. **Split:** cuts the text into small overlapping chunks
+3. **Embed:** turns each chunk into numbers (embeddings) that capture its meaning
+4. **Search:** finds the chunks most similar to the question (cosine similarity)
+5. **Answer:** sends only the best chunks to Gemini, which writes the answer with page sources
+
+## Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| Python | Main language |
+| Streamlit | Web interface |
+| Google Gemini API | AI answers + embeddings |
+| pypdf | Reading PDF text |
+| NumPy | Similarity search |
+
+##  Project Structure
+
+```
+├── .streamlit/
+│   └── config.toml      # Theme colors
+├── app.py               # Main app code
+├── requirements.txt     # Libraries needed
+└── README.md
+```
+
+##  Run Locally
+
+1. **Clone the repo**
+```bash
+   git clone https://github.com/Amycodes2025/pdf-chat-ai.git
+   cd pdf-chat-ai
+```
+
+2. **Create and activate a virtual environment**
+```bash
+   python -m venv venv
+   venv\Scripts\activate
+```
+
+3. **Install libraries**
+```bash
+   pip install -r requirements.txt
+```
+
+4. **Add Gemini API key**
+   Create `.streamlit/secrets.toml`:
+```toml
+   GEMINI_API_KEY = "api-key-here"
+```
+   Get a free key at [Google AI Studio](https://aistudio.google.com).
+
+5. **Run the app**
+```bash
+   streamlit run app.py
+```
+
+##  Limits & Privacy
+
+- Max file size: **10 MB**, max **100 pages**
+- Scanned PDFs (images only) are not supported yet
+- Uses the Gemini free tier, so please **don't upload private or sensitive files**
+- Cached data is auto-deleted after 1 hour
+
+##  Future Improvements
+
+- Support for multiple PDFs at once
+- OCR for scanned PDFs
+- Export chat history
+- Option for a fully local AI model for private documents
+
+##  Author
+
+**Your Name**
+- GitHub: [@Amycodes2025](https://github.com/Amycodes2025)
