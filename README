@@ -4,8 +4,8 @@ An AI-powered web app that lets you upload any PDF and ask questions about it in
 Every answer shows the page numbers it came from.
 
 🔗 **Live app:** https://pdf-chat-ai-7xmmn3plmwakm3k8bywt7c.streamlit.app/
-
 Youtube Link: https://youtu.be/3TT2BlnPDp0
+
 ## Features
 - **Smart search (RAG):** finds the most relevant parts of the PDF before answering
 - **Page sources:** every answer shows which pages it used
